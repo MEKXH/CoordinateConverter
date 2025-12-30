@@ -7,8 +7,8 @@
     <ProjectGuid>{E08DA420-9B8F-48CB-9D3D-72D0933057CC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PingChaText0</RootNamespace>
-    <AssemblyName>PingChaText0</AssemblyName>
+    <RootNamespace>CoordinateConverter</RootNamespace>
+    <AssemblyName>CoordinateConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

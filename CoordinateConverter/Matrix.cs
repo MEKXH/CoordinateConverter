@@ -1,6 +1,6 @@
 using System;
 
-namespace PingChaText0
+namespace CoordinateConverter
 {
     /// <summary>
     /// Represents a mathematical matrix.
