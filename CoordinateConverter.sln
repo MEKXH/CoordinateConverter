@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingChaText0", "PingChaText0\PingChaText0.csproj", "{E08DA420-9B8F-48CB-9D3D-72D0933057CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoordinateConverter", "CoordinateConverter\CoordinateConverter.csproj", "{E08DA420-9B8F-48CB-9D3D-72D0933057CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

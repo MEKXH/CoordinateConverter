@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PingChaText0
+namespace CoordinateConverter
 {
     public partial class MainForm : Form
     {

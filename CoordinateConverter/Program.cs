@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PingChaText0
+namespace CoordinateConverter
 {
     static class Program
     {
