@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PingChaText0.Properties
+namespace CoordinateConverter.Properties
 {
 
 
