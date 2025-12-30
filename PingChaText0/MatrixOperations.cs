@@ -1,221 +1,222 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace PingChaText0
 {
-    class MatrixOperations
+    public static class MatrixOperations
     {
-        /***********矩阵运算***********/
-        //矩阵加法
-        public static Matrix MatrixAdd(Matrix Ma, Matrix Mb)
-        {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            int m2 = Mb.getM;
-            int n2 = Mb.getN;
+        /*********** Matrix Operations ***********/
 
-            if ((m != m2) || (n != n2))
+        /// <summary>
+        /// Adds two matrices.
+        /// </summary>
+        public static Matrix Add(Matrix a, Matrix b)
+        {
+            if (a.Rows != b.Rows || a.Cols != b.Cols)
             {
-                Exception myException = new Exception("数组维数不匹配");
-                throw myException;
+                throw new ArgumentException("Matrix dimensions must match for addition.");
             }
 
-            Matrix Mc = new Matrix(m, n);
-            double[,] c = Mc.Detail;
-            double[,] a = Ma.Detail;
-            double[,] b = Mb.Detail;
-
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
-                    c[i, j] = a[i, j] + b[i, j];
-            return Mc;
-        }
-
-        //矩阵减法
-        public static Matrix MatrixSub(Matrix Ma, Matrix Mb)
-        {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            int m2 = Mb.getM;
-            int n2 = Mb.getN;
-            if ((m != m2) || (n != n2))
+            Matrix result = new Matrix(a.Rows, a.Cols);
+            for (int i = 0; i < a.Rows; i++)
             {
-                Exception myException = new Exception("数组维数不匹配");
-                throw myException;
-            }
-            Matrix Mc = new Matrix(m, n);
-            double[,] c = Mc.Detail;
-            double[,] a = Ma.Detail;
-            double[,] b = Mb.Detail;
-
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
-                    c[i, j] = a[i, j] - b[i, j];
-            return Mc;
-        }
-
-        //矩阵乘法
-        public static Matrix MatrixMulti(Matrix Ma, Matrix Mb)
-        {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            int m2 = Mb.getM;
-            int n2 = Mb.getN;
-
-            if (n != m2)
-            {
-                Exception myException = new Exception("数组维数不匹配");
-                throw myException;
-            }
-
-            Matrix Mc = new Matrix(m, n2);
-            double[,] c = Mc.Detail;
-            double[,] a = Ma.Detail;
-            double[,] b = Mb.Detail;
-
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n2; j++)
+                for (int j = 0; j < a.Cols; j++)
                 {
-                    c[i, j] = 0;
-                    for (int k = 0; k < n; k++)
-                        c[i, j] += a[i, k] * b[k, j];
+                    result.Data[i, j] = a.Data[i, j] + b.Data[i, j];
                 }
-            return Mc;
-
-        }
-
-        //矩阵数乘
-        public static Matrix MatrixSimpleMulti(double k, Matrix Ma)
-        {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            Matrix Mc = new Matrix(m, n);
-            double[,] c = Mc.Detail;
-            double[,] a = Ma.Detail;
-
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
-                    c[i, j] = a[i, j] * k;
-            return Mc;
-        }
-
-        //矩阵转置
-        public static Matrix MatrixTrans(Matrix MatrixOrigin)
-        {
-            int m = MatrixOrigin.getM;
-            int n = MatrixOrigin.getN;
-            Matrix MatrixNew = new Matrix(n, m);
-            double[,] c = MatrixNew.Detail;
-            double[,] a = MatrixOrigin.Detail;
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < m; j++)
-                    c[i, j] = a[j, i];
-            return MatrixNew;
-        }
-
-        //矩阵求逆（伴随矩阵法）
-        public static Matrix MatrixInvByCom(Matrix Ma)
-        {
-            double d = MatrixDet(Ma);
-            if (d == 0)
-            {
-                Exception myException = new Exception("没有逆矩阵");
-                throw myException;
             }
-            Matrix Ax = MatrixCom(Ma);
-            Matrix An = MatrixSimpleMulti((1.0 / d), Ax);
-            return An;
-        }
-        //对应行列式的代数余子式矩阵
-        public static Matrix MatrixSpa(Matrix Ma, int ai, int aj)
-        {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            if (m != n)
-            {
-                Exception myException = new Exception("矩阵不是方阵");
-                throw myException;
-            }
-            int n2 = n - 1;
-            Matrix Mc = new Matrix(n2, n2);
-            double[,] a = Ma.Detail;
-            double[,] b = Mc.Detail;
-
-            //左上
-            for (int i = 0; i < ai; i++)
-                for (int j = 0; j < aj; j++)
-                {
-                    b[i, j] = a[i, j];
-                }
-            //右下
-            for (int i = ai; i < n2; i++)
-                for (int j = aj; j < n2; j++)
-                {
-                    b[i, j] = a[i + 1, j + 1];
-                }
-            //右上
-            for (int i = 0; i < ai; i++)
-                for (int j = aj; j < n2; j++)
-                {
-                    b[i, j] = a[i, j + 1];
-                }
-            //左下
-            for (int i = ai; i < n2; i++)
-                for (int j = 0; j < aj; j++)
-                {
-                    b[i, j] = a[i + 1, j];
-                }
-            //符号位
-            if ((ai + aj) % 2 != 0)
-            {
-                for (int i = 0; i < n2; i++)
-                    b[i, 0] = -b[i, 0];
-
-            }
-            return Mc;
-
+            return result;
         }
 
-        //矩阵的行列式,矩阵必须是方阵
-        public static double MatrixDet(Matrix Ma)
+        /// <summary>
+        /// Subtracts matrix b from matrix a.
+        /// </summary>
+        public static Matrix Subtract(Matrix a, Matrix b)
         {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            if (m != n)
+            if (a.Rows != b.Rows || a.Cols != b.Cols)
             {
-                Exception myException = new Exception("数组维数不匹配");
-                throw myException;
+                throw new ArgumentException("Matrix dimensions must match for subtraction.");
             }
-            double[,] a = Ma.Detail;
-            if (n == 1) return a[0, 0];
+
+            Matrix result = new Matrix(a.Rows, a.Cols);
+            for (int i = 0; i < a.Rows; i++)
+            {
+                for (int j = 0; j < a.Cols; j++)
+                {
+                    result.Data[i, j] = a.Data[i, j] - b.Data[i, j];
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies two matrices.
+        /// </summary>
+        public static Matrix Multiply(Matrix a, Matrix b)
+        {
+            if (a.Cols != b.Rows)
+            {
+                throw new ArgumentException("Number of columns in first matrix must match number of rows in second matrix.");
+            }
+
+            Matrix result = new Matrix(a.Rows, b.Cols);
+            for (int i = 0; i < a.Rows; i++)
+            {
+                for (int j = 0; j < b.Cols; j++)
+                {
+                    result.Data[i, j] = 0;
+                    for (int k = 0; k < a.Cols; k++)
+                    {
+                        result.Data[i, j] += a.Data[i, k] * b.Data[k, j];
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies a matrix by a scalar.
+        /// </summary>
+        public static Matrix Multiply(double scalar, Matrix matrix)
+        {
+            Matrix result = new Matrix(matrix.Rows, matrix.Cols);
+            for (int i = 0; i < matrix.Rows; i++)
+            {
+                for (int j = 0; j < matrix.Cols; j++)
+                {
+                    result.Data[i, j] = matrix.Data[i, j] * scalar;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Transposes a matrix.
+        /// </summary>
+        public static Matrix Transpose(Matrix matrix)
+        {
+            Matrix result = new Matrix(matrix.Cols, matrix.Rows);
+            for (int i = 0; i < matrix.Cols; i++)
+            {
+                for (int j = 0; j < matrix.Rows; j++)
+                {
+                    result.Data[i, j] = matrix.Data[j, i];
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Inverts a matrix using the adjoint method.
+        /// </summary>
+        public static Matrix Invert(Matrix matrix)
+        {
+            double det = Determinant(matrix);
+            if (Math.Abs(det) < 1e-10) // Check for singularity with tolerance
+            {
+                throw new InvalidOperationException("Matrix is singular and cannot be inverted.");
+            }
+
+            Matrix adjoint = Adjoint(matrix);
+            return Multiply(1.0 / det, adjoint);
+        }
+
+        /// <summary>
+        /// Calculates the algebraic cofactor matrix.
+        /// </summary>
+        private static Matrix AlgebraicCofactor(Matrix matrix, int rowToRemove, int colToRemove)
+        {
+            if (matrix.Rows != matrix.Cols)
+            {
+                throw new ArgumentException("Matrix must be square.");
+            }
+
+            int n = matrix.Rows - 1;
+            Matrix result = new Matrix(n, n);
+
+            // Fill top-left
+            for (int i = 0; i < rowToRemove; i++)
+            {
+                for (int j = 0; j < colToRemove; j++)
+                {
+                    result.Data[i, j] = matrix.Data[i, j];
+                }
+            }
+
+            // Fill bottom-right
+            for (int i = rowToRemove; i < n; i++)
+            {
+                for (int j = colToRemove; j < n; j++)
+                {
+                    result.Data[i, j] = matrix.Data[i + 1, j + 1];
+                }
+            }
+
+            // Fill top-right
+            for (int i = 0; i < rowToRemove; i++)
+            {
+                for (int j = colToRemove; j < n; j++)
+                {
+                    result.Data[i, j] = matrix.Data[i, j + 1];
+                }
+            }
+
+            // Fill bottom-left
+            for (int i = rowToRemove; i < n; i++)
+            {
+                for (int j = 0; j < colToRemove; j++)
+                {
+                    result.Data[i, j] = matrix.Data[i + 1, j];
+                }
+            }
+
+            // Negate the first column if sum of indices is odd.
+            // This is part of the specific determinant calculation algorithm used in this project.
+            if ((rowToRemove + colToRemove) % 2 != 0)
+            {
+                 for (int i = 0; i < n; i++)
+                    result.Data[i, 0] = -result.Data[i, 0];
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the determinant of a matrix.
+        /// </summary>
+        public static double Determinant(Matrix matrix)
+        {
+            if (matrix.Rows != matrix.Cols)
+            {
+                throw new ArgumentException("Matrix must be square.");
+            }
+
+            if (matrix.Rows == 1) return matrix.Data[0, 0];
 
             double D = 0;
-            for (int i = 0; i < n; i++)
+            // Expansion along the second row (index 1)
+            for (int i = 0; i < matrix.Cols; i++)
             {
-                D += a[1, i] * MatrixDet(MatrixSpa(Ma, 1, i));
+                D += matrix.Data[1, i] * Determinant(AlgebraicCofactor(matrix, 1, i));
             }
             return D;
         }
 
-        //矩阵的伴随矩阵
-        public static Matrix MatrixCom(Matrix Ma)
+        /// <summary>
+        /// Calculates the adjoint matrix.
+        /// </summary>
+        public static Matrix Adjoint(Matrix matrix)
         {
-            int m = Ma.getM;
-            int n = Ma.getN;
-            Matrix Mc = new Matrix(m, n);
-            double[,] c = Mc.Detail;
-            double[,] a = Ma.Detail;
+            Matrix result = new Matrix(matrix.Rows, matrix.Cols);
 
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
-                    c[i, j] = MatrixDet(MatrixSpa(Ma, j, i));
+            for (int i = 0; i < matrix.Rows; i++)
+            {
+                for (int j = 0; j < matrix.Cols; j++)
+                {
+                    result.Data[i, j] = Determinant(AlgebraicCofactor(matrix, j, i));
+                }
+            }
 
-            return Mc;
+            return result;
         }
-
     }
 }
-
