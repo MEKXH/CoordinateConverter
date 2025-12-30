@@ -1,52 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace PingChaText0
 {
-    class Matrix
+    /// <summary>
+    /// Represents a mathematical matrix.
+    /// </summary>
+    public class Matrix
     {
-        //矩阵打包成类，矩阵为m * n
-        double[,] A;
-        int m, n;
-        string name;
-        public Matrix(int am, int an)
+        private double[,] _data;
+        private int _rows;
+        private int _cols;
+        private string _name;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Matrix"/> class.
+        /// </summary>
+        /// <param name="rows">The number of rows.</param>
+        /// <param name="cols">The number of columns.</param>
+        public Matrix(int rows, int cols)
         {
-            m = am;
-            n = an;
-            A = new double[m, n];
-            name = "Result";
-        }
-        public Matrix(int am, int an, string aName)
-        {
-            m = am;
-            n = an;
-            A = new double[m, n];
-            name = aName;
+            _rows = rows;
+            _cols = cols;
+            _data = new double[_rows, _cols];
+            _name = "Result";
         }
 
-        public int getM
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Matrix"/> class with a name.
+        /// </summary>
+        /// <param name="rows">The number of rows.</param>
+        /// <param name="cols">The number of columns.</param>
+        /// <param name="name">The name of the matrix.</param>
+        public Matrix(int rows, int cols, string name)
         {
-            get { return m; }
+            _rows = rows;
+            _cols = cols;
+            _data = new double[_rows, _cols];
+            _name = name;
         }
-        public int getN
+
+        /// <summary>
+        /// Gets the number of rows.
+        /// </summary>
+        public int Rows
         {
-            get { return n; }
+            get { return _rows; }
         }
-        public double[,] Detail
+
+        /// <summary>
+        /// Gets the number of columns.
+        /// </summary>
+        public int Cols
         {
-            get { return A; }
-            set { A = value; }
+            get { return _cols; }
         }
+
+        /// <summary>
+        /// Gets or sets the data of the matrix.
+        /// </summary>
+        public double[,] Data
+        {
+            get { return _data; }
+            set { _data = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the matrix.
+        /// </summary>
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return _name; }
+            set { _name = value; }
         }
     }
 }
-
-
-
