@@ -290,35 +290,35 @@ namespace CoordinateConverter
             // 
             this.导入区域坐标ToolStripMenuItem.Name = "导入区域坐标ToolStripMenuItem";
             this.导入区域坐标ToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
-            this.导入区域坐标ToolStripMenuItem.Text = "导入区域坐标";
+            this.导入区域坐标ToolStripMenuItem.Text = "导入区域坐标(&I)";
             this.导入区域坐标ToolStripMenuItem.Click += new System.EventHandler(this.导入区域坐标ToolStripMenuItem_Click);
             // 
             // 导入CGCS2000坐标ToolStripMenuItem
             // 
             this.导入CGCS2000坐标ToolStripMenuItem.Name = "导入CGCS2000坐标ToolStripMenuItem";
             this.导入CGCS2000坐标ToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
-            this.导入CGCS2000坐标ToolStripMenuItem.Text = "导入CGCS2000坐标";
+            this.导入CGCS2000坐标ToolStripMenuItem.Text = "导入CGCS2000坐标(&G)";
             this.导入CGCS2000坐标ToolStripMenuItem.Click += new System.EventHandler(this.导入CGCS2000坐标ToolStripMenuItem_Click);
             // 
             // 计算转换7参数ToolStripMenuItem
             // 
             this.计算转换7参数ToolStripMenuItem.Name = "计算转换7参数ToolStripMenuItem";
             this.计算转换7参数ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.计算转换7参数ToolStripMenuItem.Text = "计算转换7参数及中误差";
+            this.计算转换7参数ToolStripMenuItem.Text = "计算转换7参数及中误差(&C)";
             this.计算转换7参数ToolStripMenuItem.Click += new System.EventHandler(this.计算转换7参数ToolStripMenuItem_Click);
             // 
             // 计算转换坐标ToolStripMenuItem
             // 
             this.计算转换坐标ToolStripMenuItem.Name = "计算转换坐标ToolStripMenuItem";
             this.计算转换坐标ToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
-            this.计算转换坐标ToolStripMenuItem.Text = "计算转换坐标";
+            this.计算转换坐标ToolStripMenuItem.Text = "计算转换坐标(&T)";
             this.计算转换坐标ToolStripMenuItem.Click += new System.EventHandler(this.计算转换坐标ToolStripMenuItem_Click);
             // 
             // 导出转换坐标ToolStripMenuItem
             // 
             this.导出转换坐标ToolStripMenuItem.Name = "导出转换坐标ToolStripMenuItem";
             this.导出转换坐标ToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
-            this.导出转换坐标ToolStripMenuItem.Text = "导出转换后坐标";
+            this.导出转换坐标ToolStripMenuItem.Text = "导出转换后坐标(&E)";
             this.导出转换坐标ToolStripMenuItem.Click += new System.EventHandler(this.导出转换后坐标ToolStripMenuItem_Click);
             // 
             // label1
@@ -519,6 +519,7 @@ namespace CoordinateConverter
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(203, 25);
             this.textBox1.TabIndex = 13;
+            this.textBox1.AccessibleName = "验后单位权中误差";
             // 
             // label5
             // 
