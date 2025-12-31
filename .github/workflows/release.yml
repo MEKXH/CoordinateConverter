@@ -1,0 +1,51 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore NuGet packages
+      run: nuget restore CoordinateConverter.sln
+
+    - name: Build Release
+      run: msbuild CoordinateConverter.sln /p:Configuration=Release /p:Platform="Any CPU"
+
+    - name: Create Release Archive
+      run: |
+        Compress-Archive -Path "CoordinateConverter/bin/Release/*" -DestinationPath "Bursa七参数转换-${{ github.ref_name }}.zip"
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: ${{ github.ref_name }}
+        body: |
+          ## Bursa七参数转换 ${{ github.ref_name }}
+
+          基于布尔莎-沃尔夫(Bursa-Wolf)七参数模型的坐标转换工具。
+
+          ### 下载说明
+          - 下载 zip 文件并解压
+          - 运行 `CoordinateConverter.exe`
+
+          ### 系统要求
+          - Windows 7/10/11
+          - .NET Framework 4.8
+        files: |
+          Bursa七参数转换-${{ github.ref_name }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
