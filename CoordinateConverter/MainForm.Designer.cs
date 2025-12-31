@@ -409,7 +409,7 @@ namespace CoordinateConverter
             // ========================================
             // panel3 - Converted Coordinates Card
             // ========================================
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.BackColor = cardColor;
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.dataGridView4);
@@ -566,25 +566,25 @@ namespace CoordinateConverter
             this.Column11.Name = "Column11";
             this.Column11.Width = 210;
 
-            // label5 - Unit labels
+            // label5 - Unit hint
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.5F);
             this.label5.ForeColor = textMuted;
             this.label5.Location = new System.Drawing.Point(20, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(800, 16);
+            this.label5.Size = new System.Drawing.Size(400, 16);
             this.label5.TabIndex = 16;
-            this.label5.Text = "m                                    m                                    m                                    \"                                    \"                                    \"                                    ppm";
+            this.label5.Text = "单位: Tx/Ty/Tz (m),  \u03c9x/\u03c9y/\u03c9z (\"),  m (ppm)";
 
-            // label6 - Unit description
+            // label6 - Hidden (no longer needed)
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.5F);
             this.label6.ForeColor = textMuted;
             this.label6.Location = new System.Drawing.Point(20, 156);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 16);
+            this.label6.Size = new System.Drawing.Size(0, 16);
             this.label6.TabIndex = 17;
-            this.label6.Text = "参数单位";
+            this.label6.Visible = false;
 
             // label3 - Hidden
             this.label3.AutoSize = true;

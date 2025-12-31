@@ -63,6 +63,41 @@ namespace CoordinateConverter
             EnableDoubleBufferingForDGV(this.dataGridView2);
             EnableDoubleBufferingForDGV(this.dataGridView3);
             EnableDoubleBufferingForDGV(this.dataGridView4);
+
+            // Handle resize for proportional panel layout
+            this.Resize += MainForm_Resize;
+            AdjustPanelLayout();
+        }
+
+        // Adjust panel layout on resize
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            AdjustPanelLayout();
+        }
+
+        // Calculate and apply proportional panel widths
+        private void AdjustPanelLayout()
+        {
+            int margin = 16;
+            int gap = 16;
+            int availableWidth = this.ClientSize.Width - (margin * 2) - (gap * 2);
+            int panelWidth = availableWidth / 3;
+
+            // Panel 1 - Left
+            panel1.Location = new System.Drawing.Point(margin, panel1.Location.Y);
+            panel1.Width = panelWidth;
+
+            // Panel 2 - Center
+            panel2.Location = new System.Drawing.Point(margin + panelWidth + gap, panel2.Location.Y);
+            panel2.Width = panelWidth;
+
+            // Panel 3 - Right
+            panel3.Location = new System.Drawing.Point(margin + (panelWidth + gap) * 2, panel3.Location.Y);
+            panel3.Width = panelWidth;
+
+            // Panel 4 - Bottom (full width)
+            panel4.Location = new System.Drawing.Point(margin, panel4.Location.Y);
+            panel4.Width = this.ClientSize.Width - (margin * 2);
         }
 
         // Enable double buffering for panel
