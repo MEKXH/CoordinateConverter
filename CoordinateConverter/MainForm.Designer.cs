@@ -600,7 +600,7 @@ namespace CoordinateConverter
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
             this.label8.ForeColor = textPrimary;
-            this.label8.Location = new System.Drawing.Point(20, 140);
+            this.label8.Location = new System.Drawing.Point(20, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 19);
             this.label8.TabIndex = 19;
@@ -611,7 +611,7 @@ namespace CoordinateConverter
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
             this.textBox1.ForeColor = primaryColor;
-            this.textBox1.Location = new System.Drawing.Point(150, 137);
+            this.textBox1.Location = new System.Drawing.Point(165, 138);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 25);
@@ -624,7 +624,7 @@ namespace CoordinateConverter
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.label9.ForeColor = textMuted;
-            this.label9.Location = new System.Drawing.Point(255, 142);
+            this.label9.Location = new System.Drawing.Point(270, 142);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 17);
             this.label9.TabIndex = 21;
