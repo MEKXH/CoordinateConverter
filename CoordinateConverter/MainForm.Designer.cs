@@ -254,7 +254,7 @@ namespace CoordinateConverter
             // ========================================
             this.statusStrip1.BackColor = toolbarBg;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.statusLabel });
-            this.statusStrip1.Location = new System.Drawing.Point(0, 678);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 696);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1560, 24);
@@ -491,7 +491,7 @@ namespace CoordinateConverter
             this.panel4.Location = new System.Drawing.Point(16, 480);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(1);
-            this.panel4.Size = new System.Drawing.Size(1528, 188);
+            this.panel4.Size = new System.Drawing.Size(1528, 210);
             this.panel4.TabIndex = 27;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
@@ -518,7 +518,7 @@ namespace CoordinateConverter
             this.dataGridView3.ColumnHeadersHeight = 40;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                this.Column5, this.Column6, this.Column7, this.Column8, this.Column9, this.Column10, this.Column11});
+                this.ColumnType, this.Column5, this.Column6, this.Column7, this.Column8, this.Column9, this.Column10, this.Column11});
             this.dataGridView3.DefaultCellStyle = cellStyle;
             this.dataGridView3.EnableHeadersVisualStyles = false;
             this.dataGridView3.GridColor = borderColor;
@@ -527,9 +527,16 @@ namespace CoordinateConverter
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowTemplate.Height = 32;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(1488, 80);
+            this.dataGridView3.Size = new System.Drawing.Size(1488, 110);
             this.dataGridView3.TabIndex = 4;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+
+            // ColumnType - Row type identifier
+            this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnType.HeaderText = "";
+            this.ColumnType.Name = "ColumnType";
+            this.ColumnType.Width = 80;
+            this.ColumnType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
 
             // Column5 - Tx
             this.Column5.HeaderText = "Tx (m)";
@@ -600,7 +607,7 @@ namespace CoordinateConverter
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
             this.label8.ForeColor = textPrimary;
-            this.label8.Location = new System.Drawing.Point(20, 142);
+            this.label8.Location = new System.Drawing.Point(20, 168);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 19);
             this.label8.TabIndex = 19;
@@ -611,10 +618,10 @@ namespace CoordinateConverter
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
             this.textBox1.ForeColor = primaryColor;
-            this.textBox1.Location = new System.Drawing.Point(165, 138);
+            this.textBox1.Location = new System.Drawing.Point(165, 165);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.Size = new System.Drawing.Size(150, 25);
             this.textBox1.TabIndex = 13;
             this.textBox1.Text = "0.000";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -624,7 +631,7 @@ namespace CoordinateConverter
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.label9.ForeColor = textMuted;
-            this.label9.Location = new System.Drawing.Point(270, 142);
+            this.label9.Location = new System.Drawing.Point(320, 168);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 17);
             this.label9.TabIndex = 21;
@@ -664,7 +671,7 @@ namespace CoordinateConverter
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = bgColor;
-            this.ClientSize = new System.Drawing.Size(1560, 702);
+            this.ClientSize = new System.Drawing.Size(1560, 720);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -674,7 +681,7 @@ namespace CoordinateConverter
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1400, 700);
+            this.MinimumSize = new System.Drawing.Size(1400, 720);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "坐标转换计算系统";
@@ -757,6 +764,7 @@ namespace CoordinateConverter
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
     }
 
     /// <summary>

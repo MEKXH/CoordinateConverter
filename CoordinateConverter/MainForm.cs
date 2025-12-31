@@ -429,7 +429,7 @@ namespace CoordinateConverter
             {
                 x1[i] = X.Data[i, 0];
             }
-            dataGridView3.Rows.Add(x1[0], x1[1], x1[2], x1[3], x1[4], x1[5], x1[6]);
+            dataGridView3.Rows.Add("参数值", x1[0], x1[1], x1[2], x1[3], x1[4], x1[5], x1[6]);
 
             // Calculate error
             double n = 0;
@@ -439,7 +439,7 @@ namespace CoordinateConverter
                 nbb_1[i] = n;
             }
 
-            dataGridView3.Rows.Add(nbb_1[0], nbb_1[1], nbb_1[2], nbb_1[3], nbb_1[4], nbb_1[5], nbb_1[6]);
+            dataGridView3.Rows.Add("中误差", nbb_1[0], nbb_1[1], nbb_1[2], nbb_1[3], nbb_1[4], nbb_1[5], nbb_1[6]);
 
             UpdateStatus($"计算完成 - 验后单位权中误差: {sigma:F6} m");
         }
