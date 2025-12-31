@@ -46,6 +46,25 @@ namespace CoordinateConverter
             ApplyZebraStriping(this.dataGridView2);
             ApplyZebraStriping(this.dataGridView3);
             ApplyZebraStriping(this.dataGridView4);
+
+            // Apply modern border to panels
+            ApplyPanelBorder(this.panel1);
+            ApplyPanelBorder(this.panel2);
+            ApplyPanelBorder(this.panel3);
+            ApplyPanelBorder(this.panel4);
+        }
+
+        // Apply modern border to panel
+        private void ApplyPanelBorder(Panel panel)
+        {
+            panel.Paint += (s, e) =>
+            {
+                var borderColor = System.Drawing.Color.FromArgb(229, 231, 235);
+                using (var pen = new System.Drawing.Pen(borderColor, 1))
+                {
+                    e.Graphics.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
+                }
+            };
         }
 
         // Apply zebra striping to DataGridView

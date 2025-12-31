@@ -280,12 +280,6 @@ namespace CoordinateConverter
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
             this.panel1.Size = new System.Drawing.Size(500, 400);
             this.panel1.TabIndex = 24;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler((s, e) => {
-                using (var pen = new System.Drawing.Pen(borderColor, 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, this.panel1.Width - 1, this.panel1.Height - 1);
-                }
-            });
 
             // label0 - Local Coordinates Title
             this.label0.AutoSize = true;
@@ -353,12 +347,6 @@ namespace CoordinateConverter
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(500, 400);
             this.panel2.TabIndex = 25;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler((s, e) => {
-                using (var pen = new System.Drawing.Pen(borderColor, 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, this.panel2.Width - 1, this.panel2.Height - 1);
-                }
-            });
 
             // label4 - CGCS2000 Title
             this.label4.AutoSize = true;
@@ -426,12 +414,6 @@ namespace CoordinateConverter
             this.panel3.Padding = new System.Windows.Forms.Padding(1);
             this.panel3.Size = new System.Drawing.Size(496, 400);
             this.panel3.TabIndex = 26;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler((s, e) => {
-                using (var pen = new System.Drawing.Pen(borderColor, 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, this.panel3.Width - 1, this.panel3.Height - 1);
-                }
-            });
 
             // label2 - Converted Title
             this.label2.AutoSize = true;
@@ -505,12 +487,6 @@ namespace CoordinateConverter
             this.panel4.Padding = new System.Windows.Forms.Padding(1);
             this.panel4.Size = new System.Drawing.Size(1528, 188);
             this.panel4.TabIndex = 27;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler((s, e) => {
-                using (var pen = new System.Drawing.Pen(borderColor, 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, this.panel4.Width - 1, this.panel4.Height - 1);
-                }
-            });
 
             // label1 - Parameters Title
             this.label1.AutoSize = true;
