@@ -35,11 +35,117 @@ namespace CoordinateConverter
         public MainForm()
         {
             InitializeComponent();
+            UpdateStatus("就绪");
+
+            // Enable keyboard shortcuts
+            this.KeyPreview = true;
+            this.KeyDown += MainForm_KeyDown;
+
+            // Apply zebra striping to grids
+            ApplyZebraStriping(this.dataGridView1);
+            ApplyZebraStriping(this.dataGridView2);
+            ApplyZebraStriping(this.dataGridView3);
+            ApplyZebraStriping(this.dataGridView4);
+        }
+
+        // Apply zebra striping to DataGridView
+        private void ApplyZebraStriping(DataGridView dgv)
+        {
+            dgv.RowPostPaint += (sender, e) =>
+            {
+                DataGridView grid = sender as DataGridView;
+                if (e.RowIndex >= 0 && e.RowIndex < grid.Rows.Count)
+                {
+                    if (e.RowIndex % 2 == 0)
+                    {
+                        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+                    }
+                    else
+                    {
+                        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+                    }
+                }
+            };
+        }
+
+        // Keyboard shortcuts handler
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Ctrl+I: Import Local Coordinates
+            if (e.Control && e.KeyCode == Keys.I)
+            {
+                导入区域坐标ToolStripMenuItem_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+G: Import CGCS2000 Coordinates
+            else if (e.Control && e.KeyCode == Keys.G)
+            {
+                导入CGCS2000坐标ToolStripMenuItem_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+C: Calculate 7 Parameters
+            else if (e.Control && e.KeyCode == Keys.C)
+            {
+                计算转换7参数ToolStripMenuItem_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+T: Calculate Coordinates
+            else if (e.Control && e.KeyCode == Keys.T)
+            {
+                计算转换坐标ToolStripMenuItem_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+E: Export Coordinates
+            else if (e.Control && e.KeyCode == Keys.E)
+            {
+                导出转换后坐标ToolStripMenuItem_Click(sender, e);
+                e.Handled = true;
+            }
+            // Escape: Clear status
+            else if (e.KeyCode == Keys.Escape)
+            {
+                UpdateStatus("就绪");
+                e.Handled = true;
+            }
+        }
+
+        // Update status bar
+        private void UpdateStatus(string message)
+        {
+            statusLabel.Text = message;
+            statusStrip1.Invalidate();
+        }
+
+        // Toolbar button event handlers
+        private void btnImportLocal_Click(object sender, EventArgs e)
+        {
+            导入区域坐标ToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnImportCGCS_Click(object sender, EventArgs e)
+        {
+            导入CGCS2000坐标ToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnCalcParams_Click(object sender, EventArgs e)
+        {
+            计算转换7参数ToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnCalcCoords_Click(object sender, EventArgs e)
+        {
+            计算转换坐标ToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            导出转换后坐标ToolStripMenuItem_Click(sender, e);
         }
 
         // Import local coordinate data
         private void 导入区域坐标ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UpdateStatus("正在导入区域坐标...");
             OpenFileDialog openFileDialog = new OpenFileDialog();
             // Set title
             openFileDialog.Title = "请选择文件";
@@ -49,6 +155,7 @@ namespace CoordinateConverter
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
+                UpdateStatus("就绪");
                 return;
             }
             dataGridView1.Rows.Clear();
@@ -57,12 +164,18 @@ namespace CoordinateConverter
             if (!isSuccess)
             {
                 MessageBox.Show(errInfo, "温馨提示");
+                UpdateStatus("导入失败");
+            }
+            else
+            {
+                UpdateStatus($"区域坐标导入成功 - 共 {dataGridView1.Rows.Count} 行数据");
             }
         }
 
         // Import CGCS2000 coordinates
         private void 导入CGCS2000坐标ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UpdateStatus("正在导入CGCS2000坐标...");
             OpenFileDialog openFileDialog = new OpenFileDialog();
             // Set title
             openFileDialog.Title = "请选择文件";
@@ -72,6 +185,7 @@ namespace CoordinateConverter
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
+                UpdateStatus("就绪");
                 return;
             }
             dataGridView2.Rows.Clear();
@@ -80,6 +194,11 @@ namespace CoordinateConverter
             if (!isSuccess)
             {
                 MessageBox.Show(errInfo, "温馨提示");
+                UpdateStatus("导入失败");
+            }
+            else
+            {
+                UpdateStatus($"CGCS2000坐标导入成功 - 共 {dataGridView2.Rows.Count} 行数据");
             }
         }
 
@@ -118,6 +237,12 @@ namespace CoordinateConverter
         // Export converted coordinates
         private void 导出转换后坐标ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dataGridView4.Rows.Count == 0)
+            {
+                MessageBox.Show("没有可导出的数据。请先计算转换坐标。", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            UpdateStatus("正在导出转换后坐标...");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             // Set file save type
             saveFileDialog.Filter = "(*.txt)|*.txt|(*.dat)|*.dat";
@@ -127,15 +252,20 @@ namespace CoordinateConverter
             saveFileDialog.Title = "保存文件";
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
+                UpdateStatus("就绪");
                 return;
             }
             var isSuccess = DataGridToTxt(dataGridView4, saveFileDialog.FileName, ',');
             if (!isSuccess)
             {
                 MessageBox.Show("保存出错,请检查表格中数据是否为空或有误", "温馨提示");
+                UpdateStatus("导出失败");
             }
             else
-                MessageBox.Show("       保存成功", "温馨提示");
+            {
+                MessageBox.Show("保存成功", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateStatus($"转换坐标已导出至 {System.IO.Path.GetFileName(saveFileDialog.FileName)}");
+            }
         }
 
         /// <summary>
@@ -182,6 +312,14 @@ namespace CoordinateConverter
         // Calculate 7 parameters
         private void 计算转换7参数ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count < 12 || dataGridView2.Rows.Count < 12)
+            {
+                MessageBox.Show("数据不足。每个表格至少需要12行数据才能计算7参数。", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UpdateStatus("计算失败 - 数据不足");
+                return;
+            }
+
+            UpdateStatus("正在计算转换7参数...");
             // Import data to matrices Place, CGCS2000
             GetDataFromDGV1(dataGridView1, place, 12);
             GetDataFromDGV1(dataGridView2, cgcs, 12);
@@ -216,6 +354,7 @@ namespace CoordinateConverter
             sigma = Math.Sqrt(Convert.ToDouble((MatrixOperations.Multiply(MatrixOperations.Transpose(V), V)).Data[0, 0]) / (num - 7));
             textBox1.Text = (Convert.ToString(sigma));
 
+            dataGridView3.Rows.Clear();
             // Display X matrix (7 parameters) in DataGridView
             double[] x1 = new double[7];
             for (int i = 0; i < 7; i++)
@@ -233,11 +372,30 @@ namespace CoordinateConverter
             }
 
             dataGridView3.Rows.Add(nbb_1[0], nbb_1[1], nbb_1[2], nbb_1[3], nbb_1[4], nbb_1[5], nbb_1[6]);
+
+            UpdateStatus($"计算完成 - 验后单位权中误差: {sigma:F6} m");
         }
 
         // Calculate converted coordinates
         private void 计算转换坐标ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count < 18 || dataGridView2.Rows.Count < 12)
+            {
+                MessageBox.Show("数据不足。区域坐标需要至少18行，CGCS2000坐标需要至少12行。", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UpdateStatus("计算失败 - 数据不足");
+                return;
+            }
+
+            if (dataGridView3.Rows.Count == 0)
+            {
+                MessageBox.Show("请先计算转换7参数。", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateStatus("请先计算转换7参数");
+                return;
+            }
+
+            UpdateStatus("正在计算转换坐标...");
+            dataGridView4.Rows.Clear();
+
             // Import data to known point matrix
             GetDataFromDGV2(dataGridView1, xyzknown);
             // Import data to matrices Place, CGCS2000
@@ -288,6 +446,8 @@ namespace CoordinateConverter
                     Convert.ToDouble(XYZCon.Data[3 * i + 2, 0]).ToString("0.000")
                 );
             }
+
+            UpdateStatus($"计算完成 - 已转换 {dataGridView4.Rows.Count} 个坐标点");
         }
 
         /// <summary>
