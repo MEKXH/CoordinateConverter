@@ -72,6 +72,8 @@ namespace CoordinateConverter
             this.btnCalcCoords = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAbout = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -168,7 +170,9 @@ namespace CoordinateConverter
                 this.btnCalcParams,
                 this.btnCalcCoords,
                 this.toolStripSeparator2,
-                this.btnExport});
+                this.btnExport,
+                this.toolStripSeparator3,
+                this.btnAbout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(16, 8, 16, 8);
@@ -249,6 +253,23 @@ namespace CoordinateConverter
             this.btnExport.Text = "导出坐标";
             this.btnExport.ToolTipText = "导出转换后坐标 (Ctrl+E)";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+
+            // toolStripSeparator3
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+
+            // btnAbout
+            this.btnAbout.AutoSize = false;
+            this.btnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnAbout.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.btnAbout.ForeColor = textPrimary;
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Padding = new System.Windows.Forms.Padding(12, 4, 12, 4);
+            this.btnAbout.Size = new System.Drawing.Size(50, 32);
+            this.btnAbout.Text = "关于";
+            this.btnAbout.ToolTipText = "关于本软件";
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
 
             // ========================================
             // statusStrip1 - Modern Status Bar
@@ -683,7 +704,7 @@ namespace CoordinateConverter
             this.MinimumSize = new System.Drawing.Size(1400, 720);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "坐标转换计算系统";
+            this.Text = "Bursa七参数转换";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosing01);
 
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -728,6 +749,8 @@ namespace CoordinateConverter
         private System.Windows.Forms.ToolStripButton btnCalcCoords;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnExport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnAbout;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.Panel panel1;

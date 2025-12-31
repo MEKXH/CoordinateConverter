@@ -431,11 +431,11 @@ namespace CoordinateConverter
             }
             dataGridView3.Rows.Add("参数值", x1[0], x1[1], x1[2], x1[3], x1[4], x1[5], x1[6]);
 
-            // Calculate error
+            // Calculate error (use Math.Abs to handle numerical precision issues)
             double n = 0;
             for (int i = 0; i < 7; i++)
             {
-                n = Math.Sqrt(NBB_1.Data[i, i]) * sigma;
+                n = Math.Sqrt(Math.Abs(NBB_1.Data[i, i])) * sigma;
                 nbb_1[i] = n;
             }
 
@@ -560,6 +560,25 @@ namespace CoordinateConverter
             {
                 e.Cancel = true;
             }
+        }
+
+        // About dialog
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            string aboutInfo =
+                "Bursa七参数转换\n\n" +
+                "版本: 2.0.0\n" +
+                "作者: MEKXH\n\n" +
+                "功能说明:\n" +
+                "基于布尔莎-沃尔夫(Bursa-Wolf)七参数模型，\n" +
+                "实现区域坐标系与CGCS2000坐标系之间的转换。\n\n" +
+                "七参数:\n" +
+                "• Tx, Ty, Tz - 平移参数 (m)\n" +
+                "• ωx, ωy, ωz - 旋转参数 (\")\n" +
+                "• m - 尺度因子 (ppm)\n\n" +
+                "© 2025 MEKXH";
+
+            MessageBox.Show(aboutInfo, "关于", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
