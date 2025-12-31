@@ -280,6 +280,7 @@ namespace CoordinateConverter
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
             this.panel1.Size = new System.Drawing.Size(500, 400);
             this.panel1.TabIndex = 24;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
             // label0 - Local Coordinates Title
             this.label0.AutoSize = true;
@@ -314,6 +315,7 @@ namespace CoordinateConverter
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(460, 336);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
             // Column1 - Point ID
             this.Column1.HeaderText = "点号";
@@ -347,6 +349,7 @@ namespace CoordinateConverter
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(500, 400);
             this.panel2.TabIndex = 25;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
             // label4 - CGCS2000 Title
             this.label4.AutoSize = true;
@@ -381,6 +384,7 @@ namespace CoordinateConverter
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(460, 336);
             this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
             // Column16 - Point ID
             this.Column16.HeaderText = "点号";
@@ -405,7 +409,7 @@ namespace CoordinateConverter
             // ========================================
             // panel3 - Converted Coordinates Card
             // ========================================
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = cardColor;
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.dataGridView4);
@@ -414,6 +418,7 @@ namespace CoordinateConverter
             this.panel3.Padding = new System.Windows.Forms.Padding(1);
             this.panel3.Size = new System.Drawing.Size(496, 400);
             this.panel3.TabIndex = 26;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
             // label2 - Converted Title
             this.label2.AutoSize = true;
@@ -448,6 +453,7 @@ namespace CoordinateConverter
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(456, 336);
             this.dataGridView4.TabIndex = 7;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
             // Column12 - Point ID
             this.Column12.HeaderText = "点号";
@@ -487,6 +493,7 @@ namespace CoordinateConverter
             this.panel4.Padding = new System.Windows.Forms.Padding(1);
             this.panel4.Size = new System.Drawing.Size(1528, 188);
             this.panel4.TabIndex = 27;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
             // label1 - Parameters Title
             this.label1.AutoSize = true;
@@ -522,6 +529,7 @@ namespace CoordinateConverter
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(1488, 80);
             this.dataGridView3.TabIndex = 4;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
             // Column5 - Tx
             this.Column5.HeaderText = "Tx";

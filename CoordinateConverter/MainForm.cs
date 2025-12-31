@@ -34,6 +34,11 @@ namespace CoordinateConverter
 
         public MainForm()
         {
+            // Enable double buffering for the form
+            this.SetStyle(System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer |
+                          System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
+
             InitializeComponent();
             UpdateStatus("就绪");
 
@@ -47,24 +52,33 @@ namespace CoordinateConverter
             ApplyZebraStriping(this.dataGridView3);
             ApplyZebraStriping(this.dataGridView4);
 
-            // Apply modern border to panels
-            ApplyPanelBorder(this.panel1);
-            ApplyPanelBorder(this.panel2);
-            ApplyPanelBorder(this.panel3);
-            ApplyPanelBorder(this.panel4);
+            // Enable double buffering to prevent flickering
+            EnableDoubleBuffering(this.panel1);
+            EnableDoubleBuffering(this.panel2);
+            EnableDoubleBuffering(this.panel3);
+            EnableDoubleBuffering(this.panel4);
+
+            // Enable double buffering for DataGridViews
+            EnableDoubleBufferingForDGV(this.dataGridView1);
+            EnableDoubleBufferingForDGV(this.dataGridView2);
+            EnableDoubleBufferingForDGV(this.dataGridView3);
+            EnableDoubleBufferingForDGV(this.dataGridView4);
         }
 
-        // Apply modern border to panel
-        private void ApplyPanelBorder(Panel panel)
+        // Enable double buffering for panel
+        private void EnableDoubleBuffering(Panel panel)
         {
-            panel.Paint += (s, e) =>
-            {
-                var borderColor = System.Drawing.Color.FromArgb(229, 231, 235);
-                using (var pen = new System.Drawing.Pen(borderColor, 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
-                }
-            };
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, panel, new object[] { true });
+        }
+
+        // Enable double buffering for DataGridView
+        private void EnableDoubleBufferingForDGV(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, dgv, new object[] { true });
         }
 
         // Apply zebra striping to DataGridView
