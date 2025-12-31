@@ -45,6 +45,7 @@ namespace CoordinateConverter
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -517,6 +518,11 @@ namespace CoordinateConverter
             this.dataGridView3.ColumnHeadersDefaultCellStyle = headerStyle;
             this.dataGridView3.ColumnHeadersHeight = 40;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            // ColumnType - Row type identifier (configure before AddRange)
+            this.ColumnType.HeaderText = "";
+            this.ColumnType.Name = "ColumnType";
+            this.ColumnType.Width = 80;
+            this.ColumnType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
                 this.ColumnType, this.Column5, this.Column6, this.Column7, this.Column8, this.Column9, this.Column10, this.Column11});
             this.dataGridView3.DefaultCellStyle = cellStyle;
@@ -530,13 +536,6 @@ namespace CoordinateConverter
             this.dataGridView3.Size = new System.Drawing.Size(1488, 110);
             this.dataGridView3.TabIndex = 4;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-
-            // ColumnType - Row type identifier
-            this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnType.HeaderText = "";
-            this.ColumnType.Name = "ColumnType";
-            this.ColumnType.Width = 80;
-            this.ColumnType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
 
             // Column5 - Tx
             this.Column5.HeaderText = "Tx (m)";
