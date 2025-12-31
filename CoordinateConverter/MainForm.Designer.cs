@@ -532,49 +532,49 @@ namespace CoordinateConverter
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
             // Column5 - Tx
-            this.Column5.HeaderText = "Tx";
+            this.Column5.HeaderText = "Tx (m)";
             this.Column5.Name = "Column5";
             this.Column5.Width = 210;
 
             // Column6 - Ty
-            this.Column6.HeaderText = "Ty";
+            this.Column6.HeaderText = "Ty (m)";
             this.Column6.Name = "Column6";
             this.Column6.Width = 210;
 
             // Column7 - Tz
-            this.Column7.HeaderText = "Tz";
+            this.Column7.HeaderText = "Tz (m)";
             this.Column7.Name = "Column7";
             this.Column7.Width = 210;
 
             // Column8 - wx
-            this.Column8.HeaderText = "\u03c9x";
+            this.Column8.HeaderText = "\u03c9x (\")";
             this.Column8.Name = "Column8";
             this.Column8.Width = 210;
 
             // Column9 - wy
-            this.Column9.HeaderText = "\u03c9y";
+            this.Column9.HeaderText = "\u03c9y (\")";
             this.Column9.Name = "Column9";
             this.Column9.Width = 210;
 
             // Column10 - wz
-            this.Column10.HeaderText = "\u03c9z";
+            this.Column10.HeaderText = "\u03c9z (\")";
             this.Column10.Name = "Column10";
             this.Column10.Width = 210;
 
             // Column11 - m
-            this.Column11.HeaderText = "m";
+            this.Column11.HeaderText = "m (ppm)";
             this.Column11.Name = "Column11";
             this.Column11.Width = 210;
 
-            // label5 - Unit hint
+            // label5 - Hidden (units now in column headers)
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.5F);
             this.label5.ForeColor = textMuted;
             this.label5.Location = new System.Drawing.Point(20, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(400, 16);
+            this.label5.Size = new System.Drawing.Size(0, 16);
             this.label5.TabIndex = 16;
-            this.label5.Text = "单位: Tx/Ty/Tz (m),  \u03c9x/\u03c9y/\u03c9z (\"),  m (ppm)";
+            this.label5.Visible = false;
 
             // label6 - Hidden (no longer needed)
             this.label6.AutoSize = true;
@@ -597,37 +597,34 @@ namespace CoordinateConverter
             this.label3.Visible = false;
 
             // label8 - Error label
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
             this.label8.ForeColor = textPrimary;
-            this.label8.Location = new System.Drawing.Point(1220, 140);
+            this.label8.Location = new System.Drawing.Point(20, 140);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 19);
             this.label8.TabIndex = 19;
-            this.label8.Text = "验后单位权中误差";
+            this.label8.Text = "验后单位权中误差:";
 
             // textBox1 - Error value
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = headerBg;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
             this.textBox1.ForeColor = primaryColor;
-            this.textBox1.Location = new System.Drawing.Point(1344, 137);
+            this.textBox1.Location = new System.Drawing.Point(150, 137);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(120, 25);
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 13;
             this.textBox1.Text = "0.000";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.AccessibleName = "验后单位权中误差";
 
             // label9 - Error unit
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.label9.ForeColor = textMuted;
-            this.label9.Location = new System.Drawing.Point(1470, 142);
+            this.label9.Location = new System.Drawing.Point(255, 142);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 17);
             this.label9.TabIndex = 21;
